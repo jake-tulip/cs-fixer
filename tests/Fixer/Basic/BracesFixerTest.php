@@ -2128,6 +2128,18 @@ function foo()
         $this->doTest($expected, $input);
     }
 
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider provideFixCommentBeforeBraceCases
+     */
+    public function testFixCommentBeforeBraceClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
+        $this->doTest($expected, $input);
+    }
+
     public function provideFixCommentBeforeBraceCases()
     {
         return array(
@@ -2169,6 +2181,19 @@ function foo()
         $this->doTest($expected, $input);
     }
 
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider provideFixCommentBeforeBrace70Cases
+     * @requires PHP 7.0
+     */
+    public function testFixCommentBeforeBrace70ClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
+        $this->doTest($expected, $input);
+    }
+
     public function provideFixCommentBeforeBrace70Cases()
     {
         return array(
@@ -2194,6 +2219,18 @@ function foo()
      */
     public function testFixWhitespaceBeforeBrace($expected, $input = null)
     {
+        $this->doTest($expected, $input);
+    }
+
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider provideFixWhitespaceBeforeBraceCases
+     */
+    public function testFixWhitespaceBeforeBraceClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
         $this->doTest($expected, $input);
     }
 
@@ -2590,6 +2627,18 @@ class Foo
         $this->doTest($expected, $input);
     }
 
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider provideFixSpaceAroundTokenCases
+     */
+    public function testFixSpaceAroundTokenClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
+        $this->doTest($expected, $input);
+    }
+
     public function provideFixSpaceAroundTokenCases()
     {
         return array(
@@ -2693,6 +2742,19 @@ declare   (   ticks   =   1   )   {
         $this->doTest($expected, $input);
     }
 
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider provide55Cases
+     * @requires PHP 5.5
+     */
+    public function test55ClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
+        $this->doTest($expected, $input);
+    }
+
     public function provide55Cases()
     {
         return array(
@@ -2732,6 +2794,19 @@ declare   (   ticks   =   1   )   {
      */
     public function test56($expected, $input = null)
     {
+        $this->doTest($expected, $input);
+    }
+
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider provide56Cases
+     * @requires PHP 5.6
+     */
+    public function test56ClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
         $this->doTest($expected, $input);
     }
 
@@ -3079,6 +3154,18 @@ use const some\a\{ConstA, ConstB, ConstC};
         $this->doTest($expected, $input);
     }
 
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider providePreserveLineAfterControlBrace
+     */
+    public function testPreserveLineAfterControlBraceClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
+        $this->doTest($expected, $input);
+    }
+
     public function providePreserveLineAfterControlBrace()
     {
         return array(
@@ -3157,6 +3244,20 @@ if (true) {
      */
     public function testMessyWhitespaces($expected, $input = null)
     {
+        $this->fixer->setWhitespacesConfig(new WhitespacesFixerConfig("\t", "\r\n"));
+
+        $this->doTest($expected, $input);
+    }
+
+    /**
+     * @param string      $expected
+     * @param null|string $input
+     *
+     * @dataProvider provideMessyWhitespacesCases
+     */
+    public function testMessyWhitespacesClassyConstructsSame($expected, $input = null)
+    {
+        $this->fixer->configure(array('classy_constructs' => 'same'));
         $this->fixer->setWhitespacesConfig(new WhitespacesFixerConfig("\t", "\r\n"));
 
         $this->doTest($expected, $input);
