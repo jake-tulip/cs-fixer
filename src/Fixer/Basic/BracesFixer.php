@@ -53,9 +53,9 @@ final class BracesFixer extends AbstractFixer implements ConfigurableFixerInterf
      */
     public function configure(array $configuration = null)
     {
-        $this->configuration = self::$defaultConfiguration;
-
         if (null === $configuration) {
+            $this->configuration = self::$defaultConfiguration;
+
             return;
         }
 
@@ -72,9 +72,9 @@ final class BracesFixer extends AbstractFixer implements ConfigurableFixerInterf
                     sprintf('Position of the opening brace is invalid. Should be one of: "%s".', implode('", "', $this->supportedBracePositions))
                 );
             }
-
-            $this->configuration[$functionName] = $replacement;
         }
+
+        $this->configuration = array_merge(self::$defaultConfiguration, $configuration);
     }
 
     /**
