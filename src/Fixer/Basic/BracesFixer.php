@@ -59,14 +59,16 @@ final class BracesFixer extends AbstractFixer implements ConfigurableFixerInterf
             return;
         }
 
-        foreach ($configuration as $functionName => $replacement) {
-            if (!array_key_exists($functionName, self::$defaultConfiguration)) {
-                throw new InvalidFixerConfigurationException($this->getName(), sprintf('"%s" is not handled by the fixer.', $functionName));
+        foreach ($configuration as $key => $value) {
+            if (!array_key_exists($key, self::$defaultConfiguration)) {
+                throw new InvalidFixerConfigurationException($this->getName(), sprintf('"%s" is not handled by the fixer.', $key));
             }
 
-            if ('allow_single_line_closure' === $functionName && !is_bool($replacement)) {
-                throw new InvalidFixerConfigurationException($this->getName(), sprintf('Expected bool got "%s".', is_object($replacement) ? get_class($replacement) : gettype($replacement)));
-            } elseif ('classy_constructs' === $functionName && !in_array($replacement, $this->supportedBracePositions, true)) {
+            if ('allow_single_line_closure' === $key && !is_bool($value)) {
+                throw new InvalidFixerConfigurationException($this->getName(), sprintf('Expected bool got "%s".', is_object($value) ? get_class($value) : gettype($value)));
+            }
+
+            if ('classy_constructs' === $key && !in_array($value, $this->supportedBracePositions, true)) {
                 throw new InvalidFixerConfigurationException(
                     $this->getName(),
                     sprintf('Position of the opening brace is invalid. Should be one of: "%s".', implode('", "', $this->supportedBracePositions))
