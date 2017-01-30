@@ -221,7 +221,13 @@ class Token
      */
     public function getContent()
     {
-        return $this->content;
+//        return $content;
+		if(substr_count($this->content, ' ') % 4 !== 0) {
+			return preg_replace("/\n(  )/", "\n", $this->content);
+		}
+		else {
+			return $this->content;
+		}
     }
 
     /**

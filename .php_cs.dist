@@ -1,16 +1,18 @@
 <?php
 
 return PhpCsFixer\Config::create()
+    ->setIndent("\t")
+    ->setLineEnding("\n")
 	->setRiskyAllowed(false)
 	->setRules(array(
-		'allow-risky' => false,
+//		'allow-risky' => false,
 		'@Symfony' => false,
+		'indentation_type' => true,
 		'@Symfony:risky' => false,
-		'@PSR0' => false,
+		'psr0' => false,
 		'@PSR1' => true,
 		'@PSR2' => true,
-		'@PSR3' => false,
-		'@PSR4' => false,
+		'psr4' => false,
 		'array_syntax' => array('syntax' => 'long'),
 		'binary_operator_spaces' => true,
 		'blank_line_after_namespace' => false,
@@ -23,8 +25,8 @@ return PhpCsFixer\Config::create()
 		'cast_spaces' => true,
 		/* TODO test this */
 		'class_definition' => array(
-			'singleLine' => false,
-			'singleItemSingleLine' => true,
+			'singleLine' => true,
+			'singleItemSingleLine' => false,
 			'multiLineExtendsEachSingleLine' => false,
 		),
 		'combine_consecutive_unsets' => true,
@@ -46,8 +48,8 @@ return PhpCsFixer\Config::create()
 		'no_short_echo_tag' => true,
 		'no_singleline_whitespace_before_semicolons' => true,
 		'no_spaces_around_offset' => array(
-			'inside' => true,
-			'outside' => true,
+			'inside',
+			'outside',
 		),
 		'no_spaces_inside_parenthesis' => false,
 		'no_trailing_comma_in_list_call' => true,
@@ -70,8 +72,8 @@ return PhpCsFixer\Config::create()
 		'ternary_to_null_coalescing' => false,
 		'unary_operator_spaces' => true,
 		'visibility_required' => array(
-			'property' => true,
-			'method' => true,
+			'property',
+			'method',
 		),
 		'whitespace_after_comma_in_array' => true,
     ))
