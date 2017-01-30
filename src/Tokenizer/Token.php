@@ -222,7 +222,7 @@ class Token
     public function getContent()
     {
 //        return $content;
-		if(substr_count($this->content, ' ') % 4 !== 0) {
+		if(!empty($this->content) && substr_count($this->content, ' ') % 4 !== 0) {
 			return preg_replace("/\n(  )/", "\n", $this->content);
 		}
 		else {
