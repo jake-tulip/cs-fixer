@@ -1,45 +1,143 @@
 <?php
 
-$header = <<<'EOF'
-This file is part of PHP CS Fixer.
-
-(c) Fabien Potencier <fabien@symfony.com>
-    Dariusz Rumiński <dariusz.ruminski@gmail.com>
-
-This source file is subject to the MIT license that is bundled
-with this source code in the file LICENSE.
-EOF;
-
 return PhpCsFixer\Config::create()
-    ->setRiskyAllowed(true)
+    ->setIndent("\t")
+    ->setLineEnding("\n")
+    ->setRiskyAllowed(false)
     ->setRules(array(
-        '@PHP56Migration' => true,
-        '@Symfony' => true,
-        '@Symfony:risky' => true,
-        'array_syntax' => array('syntax' => 'short'),
+//      'allow-risky' => false,
+        '@Symfony' => false,
+        'indentation_type' => true,
+        '@Symfony:risky' => false,
+        'psr0' => false,
+        '@PSR1' => true,
+        '@PSR2' => true,
+        'psr4' => false,
+        'array_syntax' => array('syntax' => 'long'),
+        'binary_operator_spaces' => true,
+        'blank_line_after_namespace' => false,
+        'blank_line_after_opening_tag' => true,
+        'braces' => array(
+            'allow_single_line_closure' => true,
+            'position_after_functions_and_oop_constructs' => 'same',
+        ),
+        'cast_spaces' => true,
+        /* TODO test this */
+        'class_definition' => array(
+            'singleLine' => true,
+            'singleItemSingleLine' => false,
+            'multiLineExtendsEachSingleLine' => false,
+        ),
         'combine_consecutive_unsets' => true,
-        // one should use PHPUnit methods to set up expected exception instead of annotations
-        'general_phpdoc_annotation_remove' => array('expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp'),
-        'header_comment' => array('header' => $header),
-        'heredoc_to_nowdoc' => true,
-        'list_syntax' => array('syntax' => 'long'),
-        'no_extra_consecutive_blank_lines' => array('break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'),
+        'concat_space' => array('spacing' => 'one'),
+        'elseif' => false,
+        'hash_to_slash_comment' => true,
+        'linebreak_after_opening_tag' => true,
+        'lowercase_cast' => true,
+        'method_separation' => true,
+        'no_blank_lines_after_class_opening' => true,
+        'no_blank_lines_after_phpdoc' => true,
+        'no_blank_lines_before_namespace' => true,
+        'no_empty_comment' => true,
+        'no_empty_phpdoc' => true,
+        'no_empty_statement' => true,
+        'no_extra_consecutive_blank_lines' => true,
+        'no_leading_import_slash' => true,
+        'no_leading_namespace_whitespace' => true,
         'no_short_echo_tag' => true,
-        'no_unreachable_default_argument_value' => true,
+        'no_singleline_whitespace_before_semicolons' => true,
+        'no_spaces_around_offset' => array(
+            'inside',
+            'outside',
+        ),
+        'no_spaces_inside_parenthesis' => false,
+        'no_trailing_comma_in_list_call' => true,
+        'no_trailing_comma_in_singleline_array' => true,
+        'no_whitespace_before_comma_in_array' => true,
+        'no_whitespace_in_blank_line' => true,
+        'no_unused_imports' => true,
         'no_useless_else' => true,
         'no_useless_return' => true,
-        'ordered_class_elements' => true,
-        'ordered_imports' => true,
-        'php_unit_strict' => true,
-        'phpdoc_add_missing_param_annotation' => true,
-        'phpdoc_order' => true,
-        'semicolon_after_instruction' => true,
-        'strict_comparison' => true,
-        'strict_param' => true,
+        'phpdoc_align' => true,
+        'self_accessor' => true,
+        'single_blank_line_at_eof' => false,
+        'single_class_element_per_statement' => false,
+        'single_import_per_statement' => false,
+        'single_line_after_imports' => false,
+        'single_quote' => true,
+        'space_after_semicolon' => true,
+        'ternary_operator_spaces' => true,
+        /* PHP7+ */
+        'ternary_to_null_coalescing' => false,
+        'unary_operator_spaces' => true,
+        'visibility_required' => array(
+            'property',
+            'method',
+        ),
+        'whitespace_after_comma_in_array' => true,
     ))
     ->setFinder(
         PhpCsFixer\Finder::create()
-            ->exclude('tests/Fixtures')
+//            ->exclude('tests/Fixtures')
             ->in(__DIR__)
     )
 ;
+/*** Initial Options
+array_syntax
+binary_operator_spaces
+blank_line_after_namespace
+blank_line_after_opening_tag
+braces
+cast_spaces
+class_definition
+combine_consecutive_unsets
+concat_space
+-elseif
+encoding
+full_opening_tag
+function_declaration
+hash_to_slash_comment
+indentation_type
+line_ending
+linebreak_after_opening_tag
+lowercase_cast
+lowercase_constants
+lowercase_keywords
+method_argument_space
+method_separation
+no_blank_lines_after_class_opening
+no_blank_lines_after_phpdoc
+no_blank_lines_before_namespace
+no_closing_tag
+no_empty_comment
+no_empty_phpdoc
+no_empty_statement
+no_extra_consecutive_blank_lines
+no_leading_import_slash
+no_leading_namespace_whitespace
+no_short_echo_tag
+no_singleline_whitespace_before_semicolons
+no_spaces_after_function_name
+no_spaces_around_offset
+-no_spaces_inside_parenthesis
+no_trailing_comma_in_list_call
+no_trailing_comma_in_singleline_array
+no_trailing_whitespace
+no_trailing_whitespace_in_comment
+no_useless_else
+no_useless_return
+no_unused_imports
+no_whitespace_before_comma_in_array
+no_whitespace_in_blank_line
+phpdoc_add_missing_param_annotation
+phpdoc_align
+self_accessor
+-short_scalar_cast
+single_quote
+space_after_semicolon
+switch_case_semicolon_to_colon
+ternary_operator_spaces
+-ternary_to_null_coalescing
+unary_operator_spaces
+whitespace_after_comma_in_array
+***/
